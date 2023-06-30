@@ -1,0 +1,21 @@
+<div class="container text-center">
+  <h1 style="padding-top: 5%; font-family: Arial, sans-serif; font-weight: bold;">Create New Bucket</h1>
+  <div class="row justify-content-center my-5">
+    <div class="col-md-6">
+      <form (ngSubmit)="save()" [formGroup]="formGroup">
+        <div class="form-group row">
+          <label for="bucketName" class="col-md-4 col-form-label" ple>Bucket Name:</label>
+          <div class="col-md-8">
+            <input class="form-control" id="bucketName" required formControlName="bucketName" placeholder="Bucket name" />
+          </div>
+        </div>
+        <div class="form-group row my-5">
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-secondary mr-2" [routerLink]="['/']">Back</button>
+            <button class="btn btn-warning" type="submit">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="container text-center">
+  <h1 style="padding-top: 5%;">Files AWS Bucket</h1>
+
+  <button type="button" class="btn btn-secondary mr-2" [routerLink]='["/"]'>
+    Back
+  </button>
+  <button class="btn btn-warning" (click)="goToCreateBucket()" [routerLink]="['/newbucket']">Create Bucket</button>
+
+  <table *ngIf="files.length > 0" class="table table-bordered mt-4">
+    <thead class="thead-light">
+      <tr>
+        <th>Name</th>
+        <th>Creation date</th>
+        <th>Size</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of pagedFiles">
+        <td>{{ file.name }}</td>
+        <td>{{ file.creationDate | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ file.Size }}</td>
+        <td>
+          <button class="btn btn-warning mr-2" (click)="editarArchivo(file)">Edit</button>
+          <button class="btn btn-warning" (click)="deleteFile(file)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1 style="color:#312ECB" *ngIf="files.length === 0">
+    There are no files in the Bucket
+  </h1>
+
+  <nav *ngIf="files.length > 0">
+    <ul class="pagination justify-content-center mt-4">
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
+        <a class="page-link" (click)="changePage(1)" aria-label="First">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">First</span>
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
+        <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
+          <span aria-hidden="true">&lt;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [ngClass]="{ 'active': page === currentPage }">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage === totalPages }">
+        <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+          <span aria-hidden="true">&gt;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{ 'disabled': currentPage === totalPages }">
+        <a class="page-link" (click)="changePage(totalPages)" aria-label="Last">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Last</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

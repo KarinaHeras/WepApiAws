@@ -1,0 +1,17 @@
+.custom-file-input:lang(en)~.custom-file-label::after {
+  content: "File";
+}
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+  margin-right: -245px;
+}
+.mb-5, .my-5 {
+  margin-bottom: 3rem!important;
+  margin-left: -8rem;
+}
+.btn{
+  background-color: #007AFF;
+  color: #ffff;
+
+  }

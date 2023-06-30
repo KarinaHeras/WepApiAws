@@ -1,0 +1,39 @@
+<div class="container text-center mx-auto">
+  <h1 style="padding-top: 5%; font-family: Arial, sans-serif; font-weight: bold;">Upload File</h1>
+  <form (change)="charge($event)">
+    <div class="row my-5">
+      <div class="col-md-4 my-1">
+        <label class="control-label font" for="bucketName">Bucket name:</label>
+      </div>
+      <div class="col-md-5">
+        <input type="text" name="bucketName" [(ngModel)]="bucketName" class="form-control" placeholder="Bucket name">
+      </div>
+    </div>
+
+    <div class="row my-5">
+      <div class="col-md-4 my-1">
+        <label class="control-label font" for="file">Select File:</label>
+      </div>
+      <div class="col-md-5">
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" name="file" class="custom-file-input" (change)="onFileSelected($event)" />
+            <label class="custom-file-label">{{ selectedFile ? selectedFile.name : 'Choose file' }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-md-2 offset-md-3">
+        <button type="button" class="btn btn-secondary" [routerLink]='["/"]'>
+          Back
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-warning" type="submit" (click)="onUpload()">
+          Upload File
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
